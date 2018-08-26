@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+		
+		
+		<!-- 创建jedisPoolConfig对象 -->
+		<bean id="jedisConfig" class="redis.clients.jedis.JedisPoolConfig">
+			<!-- 设置最大连接数 -->
+			<property name="maxTotal" value="20"></property>
+			<!-- 最大空闲数 -->
+			<property name="maxIdle" value="2"></property>
+		</bean>
+		
+		
+		<!-- 创建jedisPool对象
+		 -->
+		 <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+			 <constructor-arg index="0" ref="jedisConfig"></constructor-arg>
+			 <constructor-arg index="1" value="192.168.1.110"></constructor-arg>
+			 <constructor-arg index="2" value="6379"></constructor-arg> 
+			 <constructor-arg index="3" value="10000"></constructor-arg> 
+			 <constructor-arg index="4" value="cjwei123"></constructor-arg> 
+			 <!-- 
+			     <constructor-arg name="poolConfig" ref="jedisPoolConfig" />
+        <constructor-arg name="host" value="${redis.host}" />
+        <constructor-arg name="port" value="${redis.port}" type="int" />
+        <constructor-arg name="timeout" value="${redis.timeout}" type="int" />
+        <constructor-arg name="password" value="#{'${redis.password}'!=''?'${redis.password}':null}" />
+        <constructor-arg name="database" value="${redis.db.index}" type="int" />
+			  -->
+		 </bean>
+		</beans>
