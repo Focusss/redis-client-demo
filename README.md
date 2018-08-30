@@ -16,7 +16,8 @@ slave1| slave2 | slave3
 ---|--- |---
 192.168.1.110:6483 | 192.168.1.110:6484 | 192.168.1.110:6485
 
-![redis-cluster](https://github.com/Focusss/redis-client-demo/blob/master/images/redis-cluster.png)
+![redis-cluster](https://github.com/Focusss/redis-client-demo/blob/master/images/redis-cluster.png)  
+
 &ensp;&ensp;若在redis cluster集群搭建过程中，遇到以下问题：
 > -  Cannot assign requested address
 > -  Could not get a resource from the pool  
